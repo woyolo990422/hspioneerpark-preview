@@ -4,17 +4,17 @@
 }
 
 .header.opaque .header-nav:not(.fixed) {
-    background-color: rgba(68, 94, 138, .96);
+    background-color: rgba(102, 134, 181, .96);
 }
 
 .preview-home {
-    background: #f7f9fa;
+    background: #f8fafb;
     color: #18232e;
 }
 
 .preview-hero {
     position: relative;
-    background: #24456d;
+    background: #6f96c8;
 }
 
 .preview-slidebox,
@@ -34,12 +34,13 @@
     width: 100%;
     height: 660px;
     object-fit: cover;
+    filter: brightness(1.24) saturate(.88);
 }
 
 .preview-hero-shade {
     position: absolute;
     inset: 0;
-    background: rgba(32, 72, 113, .42);
+    background: linear-gradient(90deg, rgba(83, 133, 186, .24), rgba(116, 158, 202, .18));
 }
 
 .preview-hero-copy {
@@ -247,7 +248,7 @@
     width: 40px;
     height: 40px;
     border-radius: 4px;
-    background: #18232e;
+    background: #5577a3;
     color: #fff;
     font-style: normal;
     font-weight: 700;
@@ -288,7 +289,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(9, 20, 30, .52);
+    background: rgba(63, 92, 124, .28);
 }
 
 .preview-space-feature div {
