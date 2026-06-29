@@ -119,7 +119,28 @@
 }
 
 .preview-section {
+    background: #ffffff;
+    box-shadow: 0 0 0 100vmax #ffffff;
+    clip-path: inset(0 -100vmax);
     padding: 84px 0;
+}
+
+.preview-about,
+.preview-empower {
+    background: #f3f7f9;
+    box-shadow: 0 0 0 100vmax #f3f7f9;
+}
+
+.preview-business,
+.preview-idea,
+.preview-news {
+    background: #ffffff;
+    box-shadow: 0 0 0 100vmax #ffffff;
+}
+
+.preview-space {
+    background: #edf5f8;
+    box-shadow: 0 0 0 100vmax #edf5f8;
 }
 
 .preview-section-head {
@@ -268,7 +289,8 @@
 }
 
 .preview-space {
-    border-top: 1px solid #e0e6ea;
+    border-top: 1px solid #dce8ee;
+    border-bottom: 1px solid #dce8ee;
 }
 
 .preview-space-layout {
