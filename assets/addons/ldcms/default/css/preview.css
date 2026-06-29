@@ -47,7 +47,7 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    width: min(1120px, calc(100% - 48px));
+    width: min(1600px, calc(100% - 40px));
     transform: translate(-50%, -42%);
     color: #fff;
     z-index: 3;
@@ -114,7 +114,7 @@
 }
 
 .preview-main {
-    width: min(1200px, calc(100% - 48px));
+    width: min(1600px, calc(100% - 40px));
     margin: 0 auto;
 }
 
