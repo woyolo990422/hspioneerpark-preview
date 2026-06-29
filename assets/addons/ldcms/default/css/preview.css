@@ -3,14 +3,18 @@
     letter-spacing: 0;
 }
 
+.header.opaque .header-nav:not(.fixed) {
+    background-color: rgba(68, 94, 138, .96);
+}
+
 .preview-home {
-    background: #f5f7f8;
+    background: #f7f9fa;
     color: #18232e;
 }
 
 .preview-hero {
     position: relative;
-    background: #101820;
+    background: #24456d;
 }
 
 .preview-slidebox,
@@ -35,7 +39,7 @@
 .preview-hero-shade {
     position: absolute;
     inset: 0;
-    background: rgba(8, 18, 28, .56);
+    background: rgba(32, 72, 113, .42);
 }
 
 .preview-hero-copy {
