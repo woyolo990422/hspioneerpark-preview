@@ -34,13 +34,10 @@
     width: 100%;
     height: 660px;
     object-fit: cover;
-    filter: brightness(1.24) saturate(.88);
 }
 
 .preview-hero-shade {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(83, 133, 186, .24), rgba(116, 158, 202, .18));
+    display: none;
 }
 
 .preview-hero-copy {
@@ -49,7 +46,7 @@
     top: 50%;
     width: min(1600px, calc(100% - 40px));
     transform: translate(-50%, -42%);
-    color: #fff;
+    color: #15304a;
     z-index: 3;
 }
 
@@ -66,18 +63,20 @@
 
 .preview-hero-copy h2 {
     margin: 18px 0 20px;
-    color: #fff;
+    color: #102842;
     font-size: 58px;
     line-height: 1.08;
     font-weight: 700;
     letter-spacing: 0;
+    text-shadow: 0 2px 14px rgba(255, 255, 255, .48);
 }
 
 .preview-hero-copy p {
     max-width: 680px;
-    color: rgba(255, 255, 255, .88);
+    color: rgba(21, 48, 74, .82);
     font-size: 20px;
     line-height: 1.8;
+    text-shadow: 0 1px 12px rgba(255, 255, 255, .4);
 }
 
 .preview-hero-actions {
@@ -103,14 +102,21 @@
 }
 
 .preview-hero-actions a + a {
-    border-color: rgba(255, 255, 255, .72);
-    background: rgba(255, 255, 255, .1);
+    border-color: rgba(21, 48, 74, .3);
+    background: rgba(255, 255, 255, .45);
+    color: #15304a;
 }
 
 .preview-hero-actions a:hover,
 .preview-link:hover {
     color: #fff;
     background: #185847;
+}
+
+.preview-hero-actions a + a:hover {
+    border-color: #1f6f5b;
+    color: #fff;
+    background: #1f6f5b;
 }
 
 .preview-main {
