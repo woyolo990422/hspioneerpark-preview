@@ -139,6 +139,7 @@
 
 .preview-business,
 .preview-idea,
+.preview-ecosystems,
 .preview-news {
     background: #ffffff;
     box-shadow: 0 0 0 100vmax #ffffff;
@@ -204,6 +205,7 @@
 .preview-space-feature p,
 .preview-space-list span,
 .preview-idea-row p,
+.preview-ecosystem-panel p,
 .preview-empower-grid p,
 .preview-news-grid p {
     color: #65717c;
@@ -364,6 +366,95 @@
     border-left: 4px solid #c7923a;
 }
 
+.preview-ecosystems {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 108px;
+}
+
+.preview-ecosystems:after {
+    content: "";
+    position: absolute;
+    left: -40px;
+    right: -40px;
+    bottom: 0;
+    height: 150px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0), #fff 92%),
+        url("../../../../../uploads/20260630/hero-building-20260630.jpg") center bottom / cover no-repeat;
+    opacity: .16;
+    pointer-events: none;
+}
+
+.preview-ecosystems .preview-section-head,
+.preview-ecosystem-panel {
+    position: relative;
+    z-index: 1;
+}
+
+.preview-ecosystem-panel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 92px;
+    padding: 0 40px 40px;
+    border: 1px solid #dce4eb;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .95);
+    box-shadow: 0 16px 34px rgba(37, 66, 97, .12);
+}
+
+.preview-ecosystem-panel article {
+    min-width: 0;
+}
+
+.preview-ecosystem-orb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(178px, 84%);
+    aspect-ratio: 1;
+    margin: -70px auto 28px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-image:
+        linear-gradient(rgba(46, 110, 174, .5), rgba(20, 84, 145, .66)),
+        var(--ecosystem-image);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 12px 24px rgba(22, 60, 102, .22);
+}
+
+.preview-ecosystem-trade {
+    --ecosystem-image: url("../../../../../uploads/20240603/e249f2ba87f7156ee3326800c5a93c0d.png");
+}
+
+.preview-ecosystem-life {
+    --ecosystem-image: url("../../../../../uploads/20240611/67dbc83bda971b039c889d934b72f36a.jpg");
+}
+
+.preview-ecosystem-ai {
+    --ecosystem-image: url("../../../../../uploads/20260630/hero-building-20260630.jpg");
+}
+
+.preview-ecosystem-culture {
+    --ecosystem-image: url("../../../../../uploads/20240605/3d61105d7e52cd90e15a2911f14ce615.png");
+}
+
+.preview-ecosystem-orb span {
+    color: #fff;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.preview-ecosystem-panel p {
+    margin: 0;
+}
+
 .preview-empower-grid {
     grid-template-columns: repeat(3, 1fr);
 }
@@ -437,9 +528,14 @@
     .preview-space-layout,
     .preview-business-grid,
     .preview-idea-row,
+    .preview-ecosystem-panel,
     .preview-empower-grid,
     .preview-news-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .preview-ecosystem-panel {
+        gap: 78px 24px;
     }
 
     .preview-about-media {
@@ -489,6 +585,7 @@
     .preview-space-layout,
     .preview-business-grid,
     .preview-idea-row,
+    .preview-ecosystem-panel,
     .preview-empower-grid,
     .preview-news-grid,
     .preview-facts {
@@ -502,6 +599,21 @@
     .preview-empower-grid a,
     .preview-news-grid article {
         padding: 22px;
+    }
+
+    .preview-ecosystems {
+        padding-bottom: 72px;
+    }
+
+    .preview-ecosystem-panel {
+        gap: 78px;
+        margin-top: 84px;
+        padding: 0 22px 30px;
+    }
+
+    .preview-ecosystem-orb {
+        width: min(168px, 76%);
+        margin-bottom: 22px;
     }
 
     .preview-news-head {
