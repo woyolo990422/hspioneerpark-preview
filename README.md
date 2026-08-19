@@ -1,3 +1,12 @@
-# 恒生云谷网站新版预览
+# 恒生云谷网站静态发布版
 
-This is a static GitHub Pages export for design review. The original PHP project and database are intentionally excluded.
+该仓库由本地LDCMS预览环境导出并通过GitHub Pages发布。原PHP项目、数据库和后台管理能力不包含在本仓库中。
+
+重新导出前需先启动本地预览站 `http://127.0.0.1:8001`，然后执行：
+
+```powershell
+npm install
+npm run export
+```
+
+导出工具会生成公开页面、园区与新闻详情、静态站内搜索、Sitemap和页面实际引用的资源。在线留言、未批准二维码、未批准品牌素材及需后台审批的经营数字不会静态发布。

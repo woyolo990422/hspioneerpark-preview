@@ -1,7 +1,9 @@
 
 $(function(){
-	$('.moble').after('<a class="search-btn"><i class="fa fa-search"></i></div><div class="search-bg"></a>');
+	$('.moble').after('<button class="search-btn" type="button" aria-label="打开搜索"><i class="fa fa-search" aria-hidden="true"></i></button><div class="search-bg"></div>');
 	$('.header .search-pup').clone(false).appendTo('.search-bg');
+	$('.search-bg label[for="site-search"]').attr('for', 'mobile-site-search');
+	$('.search-bg #site-search').attr('id', 'mobile-site-search');
 	$('.sbtn').click(function(){
 		$('.searchBox,.page-bg').fadeIn(0);
 	});
@@ -22,9 +24,15 @@ $(function(){
 	$('.moble-bars').after('<div class="mLogo"></div>');
 	$('.header .logo').clone(false).appendTo('.mLogo');
 	$('.moble-bars').after('<nav id="nav" class="inner"></nav>');
-	$('.header .navbar').clone(false).appendTo('#nav');
-	$('.nav-btn').click(function(){
-		$('#nav').slideToggle('500');
+	$('.header .navbar').clone(false).attr('id', 'mobile-main-navigation').appendTo('#nav');
+	$('.moble-bars').click(function(){
+		var open = $(this).attr('aria-expanded') !== 'true';
+		$(this).attr({
+			'aria-expanded': open ? 'true' : 'false',
+			'aria-label': open ? '关闭主导航' : '打开主导航'
+		});
+		$('body').toggleClass('nav-open', open);
+		$('#nav').stop(true, true).slideToggle(300);
 	});
 	$('#navBox li').hover(function(){
        $(this).addClass('on');  
@@ -107,6 +115,8 @@ $(function() {
 			}
 			if($width > 950){
 				$('#nav').hide();
+				$('.moble-bars').attr({'aria-expanded': 'false', 'aria-label': '打开主导航'});
+				$('body').removeClass('nav-open');
 			}			
 		});	
 });	
@@ -127,10 +137,4 @@ $(function() {
             else{oDiv.className="header-nav menu";}
         };
     }
-})();	
-
-	
-	
-	
-	
-	
+})();

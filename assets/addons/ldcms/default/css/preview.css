@@ -34,10 +34,13 @@
     width: 100%;
     height: 660px;
     object-fit: cover;
+    filter: brightness(1.24) saturate(.88);
 }
 
 .preview-hero-shade {
-    display: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(83, 133, 186, .24), rgba(116, 158, 202, .18));
 }
 
 .preview-hero-copy {
@@ -46,7 +49,7 @@
     top: 50%;
     width: min(1600px, calc(100% - 40px));
     transform: translate(-50%, -42%);
-    color: #15304a;
+    color: #fff;
     z-index: 3;
 }
 
@@ -61,22 +64,21 @@
     letter-spacing: 0;
 }
 
+.preview-hero-copy h1,
 .preview-hero-copy h2 {
     margin: 18px 0 20px;
-    color: #102842;
+    color: #fff;
     font-size: 58px;
     line-height: 1.08;
     font-weight: 700;
     letter-spacing: 0;
-    text-shadow: 0 2px 14px rgba(255, 255, 255, .48);
 }
 
 .preview-hero-copy p {
     max-width: 680px;
-    color: rgba(21, 48, 74, .82);
+    color: rgba(255, 255, 255, .88);
     font-size: 20px;
     line-height: 1.8;
-    text-shadow: 0 1px 12px rgba(255, 255, 255, .4);
 }
 
 .preview-hero-actions {
@@ -102,21 +104,14 @@
 }
 
 .preview-hero-actions a + a {
-    border-color: rgba(21, 48, 74, .3);
-    background: rgba(255, 255, 255, .45);
-    color: #15304a;
+    border-color: rgba(255, 255, 255, .72);
+    background: rgba(255, 255, 255, .1);
 }
 
 .preview-hero-actions a:hover,
 .preview-link:hover {
     color: #fff;
     background: #185847;
-}
-
-.preview-hero-actions a + a:hover {
-    border-color: #1f6f5b;
-    color: #fff;
-    background: #1f6f5b;
 }
 
 .preview-main {
@@ -139,7 +134,6 @@
 
 .preview-business,
 .preview-idea,
-.preview-ecosystems,
 .preview-news {
     background: #ffffff;
     box-shadow: 0 0 0 100vmax #ffffff;
@@ -205,7 +199,6 @@
 .preview-space-feature p,
 .preview-space-list span,
 .preview-idea-row p,
-.preview-ecosystem-panel p,
 .preview-empower-grid p,
 .preview-news-grid p {
     color: #65717c;
@@ -322,30 +315,7 @@
     background: rgba(63, 92, 124, .28);
 }
 
-.preview-space-philosophy {
-    position: absolute;
-    left: 34px;
-    right: 34px;
-    top: 108px;
-    z-index: 2;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-    color: #fff;
-    font-size: 24px;
-    line-height: 1.35;
-    font-weight: 600;
-    letter-spacing: 0;
-    text-shadow: 0 3px 14px rgba(12, 33, 55, .55);
-}
-
-.preview-space-philosophy span {
-    color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-}
-
-.preview-space-caption {
+.preview-space-feature div {
     position: absolute;
     left: 34px;
     right: 34px;
@@ -387,108 +357,6 @@
 
 .preview-idea-row article {
     border-left: 4px solid #c7923a;
-}
-
-.preview-idea-row i {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 4px;
-    background: #5577a3;
-    color: #fff;
-    font-style: normal;
-    font-weight: 700;
-}
-
-.preview-ecosystems {
-    position: relative;
-    overflow: hidden;
-    padding-bottom: 108px;
-}
-
-.preview-ecosystems:after {
-    content: "";
-    position: absolute;
-    left: -40px;
-    right: -40px;
-    bottom: 0;
-    height: 150px;
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0), #fff 92%),
-        url("../../../../../uploads/20260703/hero-building-20260703.png") center bottom / cover no-repeat;
-    opacity: .16;
-    pointer-events: none;
-}
-
-.preview-ecosystems .preview-section-head,
-.preview-ecosystem-panel {
-    position: relative;
-    z-index: 1;
-}
-
-.preview-ecosystem-panel {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin-top: 92px;
-    padding: 0 40px 40px;
-    border: 1px solid #dce4eb;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, .95);
-    box-shadow: 0 16px 34px rgba(37, 66, 97, .12);
-}
-
-.preview-ecosystem-panel article {
-    min-width: 0;
-}
-
-.preview-ecosystem-orb {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: min(178px, 84%);
-    aspect-ratio: 1;
-    margin: -70px auto 28px;
-    border-radius: 50%;
-    overflow: hidden;
-    background-image:
-        linear-gradient(rgba(46, 110, 174, .5), rgba(20, 84, 145, .66)),
-        var(--ecosystem-image);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    box-shadow: 0 12px 24px rgba(22, 60, 102, .22);
-}
-
-.preview-ecosystem-trade {
-    --ecosystem-image: url("../../../../../uploads/20240603/e249f2ba87f7156ee3326800c5a93c0d.png");
-}
-
-.preview-ecosystem-life {
-    --ecosystem-image: url("../../../../../uploads/20240611/67dbc83bda971b039c889d934b72f36a.jpg");
-}
-
-.preview-ecosystem-ai {
-    --ecosystem-image: url("../../../../../uploads/20260703/hero-building-20260703.png");
-}
-
-.preview-ecosystem-culture {
-    --ecosystem-image: url("../../../../../uploads/20240605/3d61105d7e52cd90e15a2911f14ce615.png");
-}
-
-.preview-ecosystem-orb span {
-    color: #fff;
-    font-size: 28px;
-    line-height: 1.2;
-    font-weight: 500;
-    letter-spacing: 0;
-    text-align: center;
-}
-
-.preview-ecosystem-panel p {
-    margin: 0;
 }
 
 .preview-empower-grid {
@@ -556,6 +424,7 @@
         height: 560px;
     }
 
+    .preview-hero-copy h1,
     .preview-hero-copy h2 {
         font-size: 42px;
     }
@@ -564,14 +433,9 @@
     .preview-space-layout,
     .preview-business-grid,
     .preview-idea-row,
-    .preview-ecosystem-panel,
     .preview-empower-grid,
     .preview-news-grid {
         grid-template-columns: 1fr 1fr;
-    }
-
-    .preview-ecosystem-panel {
-        gap: 78px 24px;
     }
 
     .preview-about-media {
@@ -604,6 +468,7 @@
         width: calc(100% - 28px);
     }
 
+    .preview-hero-copy h1,
     .preview-hero-copy h2 {
         font-size: 36px;
     }
@@ -621,7 +486,6 @@
     .preview-space-layout,
     .preview-business-grid,
     .preview-idea-row,
-    .preview-ecosystem-panel,
     .preview-empower-grid,
     .preview-news-grid,
     .preview-facts {
@@ -637,26 +501,6 @@
         padding: 22px;
     }
 
-    .preview-ecosystems {
-        padding-bottom: 72px;
-    }
-
-    .preview-ecosystem-panel {
-        gap: 78px;
-        margin-top: 84px;
-        padding: 0 22px 30px;
-    }
-
-    .preview-ecosystem-orb {
-        width: min(168px, 76%);
-        margin-bottom: 22px;
-    }
-
-    .preview-space-philosophy {
-        top: 76px;
-        font-size: 20px;
-    }
-
     .preview-news-head {
         display: block;
     }
@@ -664,9 +508,4 @@
     .preview-news-head .preview-link {
         margin-top: 20px;
     }
-}
-
-.s-qq.is-disabled {
-    pointer-events: none;
-    opacity: .45;
 }

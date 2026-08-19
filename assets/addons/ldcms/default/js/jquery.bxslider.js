@@ -604,7 +604,7 @@
 				}
 				// var linkContent = slider.settings.buildPager && $.isFunction(slider.settings.buildPager) ? slider.settings.buildPager(i) : i + 1;
 				// add the markup to the string
-				pagerHtml += '<div class="bx-pager-item"><a href="" data-slide-index="' + i + '" class="bx-pager-link">' + linkContent + '</a></div>';
+				pagerHtml += '<div class="bx-pager-item"><button type="button" data-slide-index="' + i + '" class="bx-pager-link" aria-label="查看第 ' + (i + 1) + ' 张轮播图">' + linkContent + '</button></div>';
 			};
 			// populate the pager element with pager links
 			slider.pagerEl.html(pagerHtml);
@@ -630,7 +630,7 @@
 				slider.pagerEl = $(slider.settings.pagerCustom);
 			}
 			// assign the pager click binding
-			slider.pagerEl.on('click', 'a', clickPagerBind);
+			slider.pagerEl.on('click', '.bx-pager-link', clickPagerBind);
 		}
 
 		/**
@@ -792,7 +792,7 @@
 			// remove all pager active classes
 			slider.pagerEl.find('a').removeClass('active');
 			// apply the active class for all pagers
-			slider.pagerEl.each(function(i, el) { $(el).find('a').eq(slideIndex).addClass('active'); });
+			slider.pagerEl.each(function(i, el) { $(el).find('.bx-pager-link').eq(slideIndex).addClass('active'); });
 		}
 
 		/**
