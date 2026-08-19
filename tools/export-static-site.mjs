@@ -31,7 +31,7 @@ const redirectPages = new Map([
   ['/huodongzhongxin.html', '/hengchuangzhongguo.html'],
 ]);
 
-const preservePaths = new Set(['.git', '.gitignore', 'README.md', 'tools', 'package.json', 'package-lock.json', 'node_modules']);
+const preservePaths = new Set(['.git', '.gitignore', 'README.md', 'tools', 'package.json', 'package-lock.json', 'node_modules', 'static-assets']);
 const assetRoots = new Set(['assets', 'uploads']);
 const pagePaths = new Set(requiredPages);
 const resourcePaths = new Set(['/favicon.ico']);
@@ -130,6 +130,34 @@ function makeContactStatic($, currentPath) {
   $('form.search-form').attr('action', relativeHref(currentPath, '/search.html'));
 }
 
+function optimizeHomepage($) {
+  const dimensions = [
+    [1682, 800],
+    [1912, 900],
+    [1905, 900],
+  ];
+
+  $('#slider .slide > img').each((index, element) => {
+    const imageNumber = index + 1;
+    const [width, height] = dimensions[index] || dimensions[0];
+    $(element).attr({
+      src: `static-assets/hero-slide-${imageNumber}-1920.webp`,
+      srcset: `static-assets/hero-slide-${imageNumber}-768.webp 768w, static-assets/hero-slide-${imageNumber}-1920.webp 1920w`,
+      sizes: '100vw',
+      width,
+      height,
+      decoding: 'async',
+      loading: index === 0 ? 'eager' : 'lazy',
+      fetchpriority: index === 0 ? 'high' : 'low',
+    });
+  });
+
+  $('.preview-main img, .preview-footer img').attr({ loading: 'lazy', decoding: 'async' });
+
+  $('script[src*="bootstrap.min.js"], script[src*="swiper.min.js"], script[src*="jquery.nicescroll.min.js"]').remove();
+  $('link[href*="swiper.min.css"]').remove();
+}
+
 function rewriteDocument(html, currentPath) {
   const $ = load(html, { decodeEntities: false });
 
@@ -139,7 +167,15 @@ function rewriteDocument(html, currentPath) {
 
   if (currentPath === '/lianxiwomen.html') makeContactStatic($, currentPath);
   if (currentPath === '/hengchuangzhongguo.html') $('.redesign-hengchuang-qr').closest('section').remove();
+  if (currentPath === '/') optimizeHomepage($);
   $('img:not([alt])').attr('alt', '');
+  $('script[src]').attr('defer', '');
+  $('script:not([src])').each((_, element) => {
+    const script = $(element).html() || '';
+    if (script.includes('new Blazy')) {
+      $(element).html(`document.addEventListener('DOMContentLoaded', function () {\n${script}\n});`);
+    }
+  });
 
   const attributes = [
     ['a', 'href'],
@@ -333,11 +369,23 @@ async function writeManifest(searchEntries) {
   await fs.writeFile(path.join(repoRoot, 'STATIC_EXPORT_MANIFEST.json'), JSON.stringify(manifest, null, 2), 'utf8');
 }
 
+async function downloadAllResources(concurrency = 8) {
+  const queue = [...resourcePaths];
+  let cursor = 0;
+  const workers = Array.from({ length: Math.min(concurrency, queue.length) }, async () => {
+    while (cursor < queue.length) {
+      const sitePath = queue[cursor++];
+      await downloadResource(sitePath);
+    }
+  });
+  await Promise.all(workers);
+}
+
 await loadSitemapPaths();
 for (const from of redirectPages.keys()) pagePaths.add(from);
 await clearGeneratedFiles();
 const searchEntries = await exportPages();
-await Promise.all([...resourcePaths].map(downloadResource));
+await downloadAllResources();
 await writeRedirectPages();
 await writeStaticSearch(searchEntries);
 await writeSitemap();

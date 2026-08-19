@@ -65,11 +65,11 @@ $(function(){
 
 	$('#slider').bxSlider({
 		mode:'fade',
-		auto:true,
+		auto:false,
 		speed:500,
 		pause:5000,
 		slideMargin:0,
-		adaptiveHeight: true,
+		adaptiveHeight: false,
 		controls:true,
 		autoHover: true,
 		pager:true
